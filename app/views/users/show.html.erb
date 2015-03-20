@@ -1,0 +1,37 @@
+<% provide(:title, @user.name) %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= link_to @user.name, user_path(@user) %>
+      </h1>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %><br/>
+      <% if current_user.following?(@user) %>
+      <%= render partial: 'dares/new' %>
+       <% else %>
+        <% unless %>
+      <% current_user == @user %>
+     
+      <h2>You must follow this person if you want to dare them</h2>
+     
+      <% end %>
+      <% end %>
+    </section>
+  </aside>
+
+  <div class="col-md-8">
+    <%= render 'follow_form' if logged_in? %>
+    <h3><%= @user.name.possessive %> Dare Feed</h3><br/>
+    <% if @dares.any? %>
+     
+      <ol class="microposts">
+        <%= render @dares, object: @user %>
+      </ol>
+      <%= will_paginate @dares %>
+    <% end %>
+  </div>
+</div>

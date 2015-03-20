@@ -1,0 +1,11 @@
+<% provide(:title, @user.name) %> <% provide(:title, " Issueded Dares") %>
+  <p><%= link_to @user.name.possessive, dared_user_path(@user) %> <%= link_to "Achieved", dared_user_path(@user) %>
+  <%= link_to "Dares", dared_user_path(@user) %> | 
+    <%= link_to @user.name.possessive, lost_user_path(@user) %> <%= link_to "Lost", lost_user_path(@user) %>
+  <%= link_to "Dares", lost_user_path(@user) %> |
+     <strong><%= link_to @user.name.possessive, view_user_path(@user) %> <%= link_to "Issued", view_user_path(@user) %>
+  <%= link_to "Dares", view_user_path(@user) %></strong></p>
+  <ol class="posts">
+   <%= render partial: "dares/dare", collection: @dares %>
+   </ol>
+    

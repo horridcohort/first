@@ -1,0 +1,24 @@
+   <li>
+  <div class="post">
+   
+  <%= link_to gravatar_for(post.user, size: 50), post.user %>
+  <%= link_to post.user.name, post.user %><br/>
+  <%= link_to "Rank:", users_rank_path %>  <%= link_to post.user.position, users_rank_path %> / <%= link_to User.count, users_rank_path %><br/>
+ <%= link_to "points", users_points_path %> <%= link_to post.user.points_count, users_points_path %><br/><br/>
+  
+  <span class="content"><%= post.content %></span>
+  <span class="timestamp">
+   <small> Posted <%= time_ago_in_words(post.created_at) %> ago.</small><br/>
+    <%= link_to "Comment", post_path(post), class: "gold" %><br/><br/>
+         
+ <div id="comments">
+        <% post.comments.each do |comment| %>
+        <%= link_to comment.name, user_path(comment.user) %> <small>said</small>
+         <%= comment.content %>.<br/>
+        <% end %>  
+         
+  </span>
+  
+
+</div>
+</li>

@@ -1,0 +1,14 @@
+<% provide(:title, 'Rank') %>
+<h1>Top Ranked</h1>
+<p>        |  <%= link_to "Rank", users_rank_path %>  |
+              <%= link_to "Points", users_points_path %> |     
+                      <%= link_to "Dares Won", users_dares_path %>  |    
+                    <%= link_to "Dares Lost", users_lostest_path %>  |     
+          <%= link_to "Dares Issued", users_issued_path %>     </p>
+
+<ul class="users">
+  <% @rankers.each do |user| %>
+    <%= render user %>
+    
+  <% end %>
+</ul>

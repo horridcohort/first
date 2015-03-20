@@ -1,0 +1,47 @@
+<% @user ||= current_user %>
+<div class="stats">
+  <a href="<%= users_points_path %>">
+    <strong id="following" class="stat">
+      <%= @user.points_count %>
+    </strong>
+    Points
+  </a>
+  <a href="<%= users_rank_path %>">
+    <strong id="followers" class="stat">
+        <%= @user.position %>
+         </strong>
+    Rank
+  </a>
+  <a href="<%= dared_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.won.count %>
+    </strong>
+    Dares Won
+  </a><br/><br/>
+  <a href="<%= lost_user_path(@user) %>">
+    <strong id="followers" class="stat">
+      <%= @user.lost.count %>
+    </strong>
+    Dares Lost
+  </a>
+   <a href="<%= view_user_path(@user) %>">
+    <strong id="followers" class="stat">
+      <%= @user.issued.count %>
+    </strong>
+    Dares Issued
+  </a>
+</div>
+<div class="stats">
+  <a href="<%= following_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.following.count %>
+    </strong>
+    following
+  </a>
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followers" class="stat">
+      <%= @user.followers.count %>
+    </strong>
+    followers
+  </a>
+</div>

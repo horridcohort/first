@@ -1,0 +1,4 @@
+  Cast your vote| <%= link_to "completed", votes_path(dare, value: 1, dare_id: dare.id, user_id: current_user.id), method: "post" %>
+            <%= dare.upvote.count %>
+  | <%= link_to "failed", votes_path(dare, value: -1, dare_id: dare.id, user_id: current_user.id), method: "post" %>
+            <%= dare.downvote.count %>

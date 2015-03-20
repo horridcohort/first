@@ -1,0 +1,18 @@
+  <div class="user">
+  <%= link_to gravatar_for(@post.user, size: 50), @post.user %>
+  <%= link_to @post.user.name, @post.user %><br/>
+  <%= link_to "Rank:", users_rank_path %>  <%= link_to @post.user.position, users_rank_path %> / <%= link_to User.count, users_rank_path %><br/>
+ <%= link_to "points", users_points_path %> <%= link_to @post.user.points.count, users_points_path %><br/><br/>
+  <span class="content">      <%= @post.content %></span><br/>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(@post.created_at) %> ago.
+  </span>
+</div>
+<span><br/><br/></span>
+     <%= form_for(@comments) do |post| %>
+ <%= post.text_field :content %>
+ <%= post.hidden_field :post_id, :value => @post.id %>
+ <%= post.hidden_field :user_id, :value => current_user.id %>
+ <%= post.hidden_field :name, :value => current_user.name %>
+ <%= post.submit "Comment", class: "btn gold2" %>
+ <% end %>

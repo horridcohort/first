@@ -1,0 +1,30 @@
+<span class="user">
+   <%= gravatar_for dare.sender, size: 25 %>
+  <span class="content">
+   I <%= link_to dare.sender.name, user_path(dare.sender) %>
+    dare you <%= link_to dare.recipient.name,  user_path(dare.recipient) %> to
+   <strong> <%= dare.body %></strong> for<strong > <%= dare.bet %> points.</strong><br/>
+    </span>
+    <% unless %>  
+      <% dare.accepted? %>
+  <% if current_user.id == dare.recipient.id %>
+  <% unless %>
+   <% dare.sender.points_count < dare.bet %>
+  <p>  <%=  form_for(dare) do |dare| %>
+             <%= dare.submit 'accept', data: { confirm: "I #{current_user.name} (the user), agree to not dare others or accept dares from others that may result in myself or others being harmed; physically, emotionally, physcologically, or in any other way as (direct or indirect) use of this site. By pressing OK, you (the user) are relieving the website and all of its owners, operators, and affiliates of any resposibility legal, financial, or otherwise, that may be incurred as a result of the improper use of this site. Play at your own risk." }, class: "btn accept" %>
+             <% end %> 
+                   <%= link_to "decline", dare,  method: :delete,
+                                       data: { confirm: "Are you sure you don't want to #{dare.body} for #{dare.bet} points? " }, class: "btn btn-danger"  %> 
+                                        <% else %>
+                                       <strong> User does not have enough points</strong>
+                                       </p><% end %> <% end %><% end %>
+            <% if  dare.accepted? %> 
+                    <%= render 'dares/video' %>
+                      Cast your vote | <%= link_to "Completed", votes_path(dare, value: 1, dare_id: dare.id, user_id: current_user.id), class: "gold", method: "post" %>
+            <%= dare.upvote.count %>
+  | <%= link_to "Failed", votes_path(dare, value: -1, dare_id: dare.id, user_id: current_user.id), class: "gold", method: "post" %>
+            <%= dare.downvote.count %>
+            <% else %>
+            <% end %>
+  <br/>
+    </span>

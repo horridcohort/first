@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag 'application', media: 'all',
+                                           'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+   <!-- scriptcam cam -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> 
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->    <script language="JavaScript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script language="JavaScript" src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+<script language="JavaScript" src="scriptcam.js"></script>
+  </head>
+  <body>
+   <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+    </div>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+     <%= render 'layouts/header' %>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+       <%= render 'layouts/footer' %>  
+    </div>
+    <link href="//vjs.zencdn.net/4.11/video-js.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script src="//vjs.zencdn.net/4.11/video.js"></script>
+</video><script src="script.js"></script>
+  </body>
+</html>

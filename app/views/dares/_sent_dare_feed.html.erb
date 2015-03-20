@@ -1,0 +1,15 @@
+<ol class="posts">
+    <% @sent_feed_items.each do |dare| %>
+   <%= gravatar_for dare.sender, size: 25 %>
+  <span class="content">
+ I <%= link_to dare.sender.name, user_path(dare.sender) %> dare you <%= link_to dare.recipient.name,  user_path %> to
+    <%= dare.body %> for<strong> <%= dare.bet %> points.</strong><br/>
+    </span>
+  <%= render 'dares/accept' if current_user.id == dare.recipient.id %>
+  <%= render 'dares/video' %>
+     | <%= pluralize dare.votes, "vote" %>
+  | <%= link_to "up", vote_dare_path(dare, value: 1), method: "post" %>
+           <%= dare.upvote.count %>
+  | <%= link_to "down", vote_dare_path(dare, value: -1), method: "post" %><br/>
+<% end %>
+    </span>

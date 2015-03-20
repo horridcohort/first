@@ -1,0 +1,28 @@
+<% provide(:title, "Home") %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+          <section class="stats">
+      <%= render partial: "shared/stats", object: @point  %>
+    </section>
+    <div><%= link_to "Edit Your Profile", edit_user_path(current_user) %></div>
+      <section class="post_form">
+        <%= render 'posts/post_form' %>
+          <ul> <%= render 'posts/feed' %></ul>
+ </section>
+    </aside>
+         <div class="col-md-8">
+      <h3>Home Dare Feed</h3>
+      <% if @dare.any? %>
+      <ol>
+  <% @dare.each do |dare| %>
+    <%= render dare %>
+    <% end %>
+    <%= will_paginate @dare %>
+</ol>
+<% else %><br/>
+<h2>You don't have any dares yet. Go get some!</h2>
+<% end %>
+</div>

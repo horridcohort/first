@@ -1,0 +1,12 @@
+<%= form_for(@dare) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+ <p>I dare you to <%= f.text_field :body %> </p>
+<p> for <%= f.text_field :bet, placeholder: "ex.100" %>Points</p>
+  <%= f.hidden_field :recipient_id, :value => @user.id %>
+  <%= f.hidden_field :sender_id, :value => current_user.id %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :won_id, :value => 0 %>
+  <%= f.hidden_field :lost_id, :value => 0 %>
+  <%= f.hidden_field :issued_id, :value => 0 %>
+   <%= f.submit 'Dare', data: { confirm: "I #{current_user.name}(the user), agree to not dare others or accept dares from others that may result in myself or others being harmed; physically, emotionally, physcologically, or in any other way as (direct or indirect) use of this site. By pressing OK, you (the user) are relieving the website and all of its owners, operators, and affiliates of any resposibility legal, financial, or otherwise, that may be incurred as a result of the improper use of this site. Play at your own risk." }, class: "btn accept" %>
+   <% end %>

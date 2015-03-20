@@ -1,0 +1,9 @@
+<li>
+  <%= gravatar_for user, size: 50 %>
+  <%= link_to user.name, user %><br/>
+  <%= link_to "Points:", users_points_path %>    <%= link_to user.points_count, users_points_path %><br/>
+  <%= link_to "Rank:", users_rank_path %>  <%= link_to user.position, users_rank_path %> / <%= link_to User.count, users_rank_path %><br/>
+  <%= link_to "Dares Won:", dared_user_path(user) %>  <%= link_to user.won.count, dared_user_path(user) %><br/>
+  <%= link_to "Dares Lost:", lost_user_path(user) %>  <%= link_to user.lost.count, lost_user_path(user) %><br/>
+  <%= link_to "Dares Issued:", view_user_path(user) %> <%= link_to user.issued.count, view_user_path(user) %>
+</li>
