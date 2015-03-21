@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 #https://github.com/horridcohort/first.git
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'scriptcam-rails'
+#gem 'scriptcam-rails'
 gem 'rails', '4.2.0.beta2'
 gem 'bootstrap-sass', '3.2.0.0'
 gem 'arel', '6.0.0.beta2'
@@ -10,7 +10,7 @@ gem 'arel', '6.0.0.beta2'
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.0.beta1'
 # Use Uglifier as compressor for JavaScript assets
@@ -49,8 +49,8 @@ group :development, :test do
   gem 'web-console', '~> 2.0.0.beta4'
 end
 group :production do
-  gem 'pg',             '0.17.1'
-  gem 'rails_12factor', '0.0.2'
+#  gem 'pg',             '0.17.1'
+  gem 'rails_12factor'#, '0.0.2'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
