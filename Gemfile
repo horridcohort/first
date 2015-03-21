@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+#https://github.com/horridcohort/first.git
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'scriptcam-rails'
 gem 'rails', '4.2.0.beta2'
